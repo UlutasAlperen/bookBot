@@ -1,3 +1,6 @@
+from stats import count_word
+
+
 def main():
     path = "books/frankenstein.txt"
     file_content = read_file(path)
@@ -17,11 +20,6 @@ def report_of_book(name,words,characters):
             print(f"The '{i}' character was found {characters[i]} times")
     print("--- End report ---")
 
-
-
-def count_word(file_content):
-    new_list = file_content.split()
-    return len(new_list)
 
 def count_character(file_content):
     new_string = file_content.lower()
