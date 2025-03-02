@@ -1,11 +1,5 @@
 from stats import count_word
-
-
-def main():
-    path = "books/frankenstein.txt"
-    file_content = read_file(path)
-    report_of_book(path,count_word(file_content),count_character(file_content))
-    
+import sys
 
 
 def read_file(path):
@@ -16,8 +10,8 @@ def report_of_book(name,words,characters):
     print(f"--- Begin report of {name} ---")
     print(f"{words} words found in the document\n")
     for i in characters:
-        if i.isalpha() == 1:
-            print(f"The '{i}' character was found {characters[i]} times")
+        if i.isalpha():
+            print(f"{i}: {characters[i]}")
     print("--- End report ---")
 
 
@@ -31,6 +25,15 @@ def count_character(file_content):
             new_dict[i]+=1
     return new_dict
 
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        path = sys.argv[1]
+        file_content = read_file(path)
+        report_of_book(path,count_word(file_content),count_character(file_content))
 
 
 main()
